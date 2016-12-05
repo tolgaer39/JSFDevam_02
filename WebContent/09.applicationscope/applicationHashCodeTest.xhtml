@@ -1,0 +1,14 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+
+<!-- application scope objesi beani bir tane olusturulur ve hep o obje kullanilir.
+	 her requestte ayni kalir farkli sessionlar icin bile degismez ayni hashCode doner
+	 Farkli tarayicida bile ayni hashCode degeri donecektir... -->
+<h1> #{applicationScopeBean.hashCode}</h1>
+
+
+</html>

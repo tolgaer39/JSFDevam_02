@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"> <!-- <f:ajax 'i kullanabilmek icin namespace i eklememiz lazim...-->
+	
+	
+	
+	<!-- request scope kucuk geliyor. session scope buyuk geliyor.
+	 	 view scope bize gore tek bir sayfa icin gecerlidir. ajax ile uyumlu calisir. ajaxta ayni viewde degismiyor requestte.
+	 	 normal view scope da refresh ettigimde ise hashcCode un degistigini gorduk.
+	 	 Ama dedigim gibi ajax ile kullandigimda degismedigini gorduk... -->
+	
+	
+<h:form prependId="false">
+
+	<table>
+		<tr>
+			<td>Name :</td>
+			<td> <h:inputText value="#{viewScopeBean.name}" id="nameId"> 
+			<f:validateLength minimum="3" maximum="8"></f:validateLength>
+			</h:inputText>
+			</td>		
+		</tr>
+		
+	</table>
+
+	<h:commandButton value="Click Me!">
+	<f:ajax execute="nameId" render="myOut myOut2"/> <!-- DİKKAT! -->
+	</h:commandButton>
+	
+	<h:message for="nameId" style="color:red"/>
+
+</h:form>
+
+
+<h3>
+	counter    :<h:outputText id="myOut" value="#{viewScopeBean.count}"/>
+</h3>
+
+<h3>
+	hashcode   :<h:outputText id="myOut2" value="#{viewScopeBean.hashCode}"/>
+</h3>
+
+</html>
